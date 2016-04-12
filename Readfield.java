@@ -15,8 +15,8 @@ public class Readfield {
 		Matcher m1 = p1.matcher(eq);
 		//Matcher m2 = p2.matcher(eq);
 		Polynomial ep =new Polynomial(0,0);	
-		while(eq !=null)
-		{
+		//while(in.findInLine(p1).matches(a))
+		//{
 			/*if(m2.find())
 			{
 				System.out.println(m2.group(1));
@@ -30,13 +30,10 @@ public class Readfield {
 				double coef = Double.parseDouble(m1.group(1));
 				int exp = Integer.parseInt(m1.group(2));
 				Polynomial ep1 =new Polynomial(coef,exp);
-				ep.plus(ep1);
+				ep = ep.plus(ep1);
 			}
 			System.out.println(ep);
-		}
+		//}
 		in.close();
 	}
-	String x = "abcd";
-
-	
 }
