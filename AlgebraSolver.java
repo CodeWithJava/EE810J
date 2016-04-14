@@ -13,7 +13,7 @@ public class AlgebraSolver
 		{
 			System.out.println("Please input the arithmetics expression");
 			System.out.println("e: exp s: sin c: cos t: tan and trigonometric function works with radians");
-			System.out.println("Example: sin(2) + 1, 1 * 5 + 2");
+			System.out.println("Example: s(2) + 1, 1 * 5 + 2");
 			Scanner m = new Scanner(System.in);
 			String x = m.nextLine();
 			String postfix = new AlgebraSolver().inToPost(x);
@@ -25,7 +25,7 @@ public class AlgebraSolver
 		{
 			System.out.println("Please input the arithmetics expression with variable");
 			System.out.println("e: exp s: sin c: cos t: tan and trigonometric function works with radians");
-			System.out.println("Example: sin(2*x) + 1, 1 * 5 + 2 and variable are x only");
+			System.out.println("Example: s(2*x) + 1, 1 * 5 + 2 and variable are x only");
 			Scanner n = new Scanner(System.in);
 			String x = n.nextLine();
 			String postfix = new AlgebraSolver().inToPost(x);
@@ -45,6 +45,9 @@ public class AlgebraSolver
 		if(postfix == null || postfix.length() == 0)
 			throw new IllegalArgumentException("Input is invalid");
 		
+		if(postfix.charAt(0) == ' ')
+			postfix = postfix.substring(1);
+		
 		String [] p = postfix.split(" ");
 		return RPN(p);
 	}
@@ -62,56 +65,70 @@ public class AlgebraSolver
 	private double RPN(String [] tokens)
 	{
 		Stack<String> stack = new Stack<>();
-		String operators = "+-*/%!^esct";
+		String operators = "!esct+-*/%^";
 
 		for(int i = 0;i < tokens.length;i++)
 		{
 			if(!operators.contains(tokens[i]))
 				stack.push(tokens[i]);
+			else if(tokens[i].equals(" "))
+				continue;
 			else
 			{
-				double a = Double.valueOf(stack.pop());
-				double b = Double.valueOf(stack.pop());
 				int index = operators.indexOf(tokens[i]);
+				double a = 0;
+				double b = 0;
 				switch(index)
 				{
 					case 0:
-						stack.push(String.valueOf(b+a));
-						break;
-					case 1:
-						stack.push(String.valueOf(b-a));
-						break;
-					case 2:
-						stack.push(String.valueOf(b*a));
-						break;
-					case 3:
-						stack.push(String.valueOf(b/a));
-						break;
-					case 4:
-						stack.push(String.valueOf((int)b % (int) a));
-						break;
-					case 5:
-						stack.push(String.valueOf(b));
+						a = Double.valueOf(stack.pop());
 						stack.push(String.valueOf(factorial((int)a)));
 						break;
-					case 6:
-						stack.push(String.valueOf(Math.pow(b,(int)a)));
-						break;
-					case 7:
-						stack.push(String.valueOf(b));
+					case 1:
+						a = Double.valueOf(stack.pop());
 						stack.push(String.valueOf(Math.exp(a)));
 						break;
-					case 8:
-						stack.push(String.valueOf(b));
+					case 2:
+						a = Double.valueOf(stack.pop());
 						stack.push(String.valueOf(Math.sin(a)));
 						break;
-					case 9:
-						stack.push(String.valueOf(b));
+					case 3:
+						a = Double.valueOf(stack.pop());
 						stack.push(String.valueOf(Math.cos(a)));
 						break;
-					case 10:
-						stack.push(String.valueOf(b));
+					case 4:
+						a = Double.valueOf(stack.pop());
 						stack.push(String.valueOf(Math.tan(a)));
+						break;
+					case 5:
+						a = Double.valueOf(stack.pop());
+						b = Double.valueOf(stack.pop());
+						stack.push(String.valueOf(b+a));
+						break;
+					case 6:
+						a = Double.valueOf(stack.pop());
+						b = Double.valueOf(stack.pop());
+						stack.push(String.valueOf(b-a));
+						break;
+					case 7:
+						a = Double.valueOf(stack.pop());
+						b = Double.valueOf(stack.pop());
+						stack.push(String.valueOf(b*a));
+						break;
+					case 8:
+						a = Double.valueOf(stack.pop());
+						b = Double.valueOf(stack.pop());
+						stack.push(String.valueOf(b/a));
+						break;
+					case 9:
+						a = Double.valueOf(stack.pop());
+						b = Double.valueOf(stack.pop());
+						stack.push(String.valueOf((int)b % (int) a));
+						break;
+					case 10:
+						a = Double.valueOf(stack.pop());
+						b = Double.valueOf(stack.pop());
+						stack.push(String.valueOf(Math.pow(b,(int)a)));
 						break;
 				}
 			}
@@ -184,8 +201,12 @@ public class AlgebraSolver
 
 		}
 		while(!stack.isEmpty())
-			postfix.append(' ').append(stack.pop());
-
+		{
+			if(stack.peek() == '!')
+				postfix.append(stack.pop());
+			else
+				postfix.append(' ').append(stack.pop());
+		}
 		return postfix.toString();
 	}
 }
