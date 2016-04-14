@@ -57,6 +57,9 @@ public class AlgebraSolver
 		if(postfix == null || postfix.length() == 0)
 			throw new IllegalArgumentException("Input is invalid");
 		
+		if(postfix.charAt(0) == ' ')
+			postfix = postfix.substring(1);
+		
 		String [] p = subsitution(postfix,x);
 		return RPN(p);
 		
