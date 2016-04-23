@@ -1,4 +1,3 @@
-package Algebra;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,8 +6,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.*;
 
 public class Vari extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
+	JTextField textField;
+	JTextField textField_1;
 
 	/**
 	 * Create the panel.
@@ -36,48 +35,43 @@ public class Vari extends JPanel {
 			}
 		});
 		
-		JButton btnNewButton = new JButton("e^x");
-		
+		JButton btnNewButton = new JButton("e");
 		JButton btnSin = new JButton("sin");
-		btnSin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
 		JButton btnCos = new JButton("cos");
-		
 		JButton btnTam = new JButton("tan");
+		
+		btnNewButton.addActionListener(new btnFunction());
+		btnSin.addActionListener(new btnFunction());
+		btnCos.addActionListener(new btnFunction());
+		btnTam.addActionListener(new btnFunction());
 		
 		JButton btnReturn = new JButton("Return");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(23)
+					.addContainerGap(23, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblTipAllTrigonometric)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 313, GroupLayout.PREFERRED_SIZE)
-							.addComponent(lblValueOfX)
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 313, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblValueOfX)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(btnNewButton)
+							.addGap(27)
+							.addComponent(btnSin, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+							.addGap(26)
+							.addComponent(btnCos, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+							.addGap(28)
+							.addComponent(btnTam, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+							.addComponent(btnReturn)
 							.addGroup(groupLayout.createSequentialGroup()
 								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 									.addComponent(textField, Alignment.LEADING)
 									.addComponent(textField_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE))
 								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(button, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE))
-							.addGroup(groupLayout.createSequentialGroup()
-								.addComponent(btnNewButton)
-								.addGap(27)
-								.addComponent(btnSin, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-								.addGap(26)
-								.addComponent(btnCos, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-								.addGap(28)
-								.addComponent(btnTam, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap())
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(359, Short.MAX_VALUE)
-					.addComponent(btnReturn)
-					.addContainerGap())
+								.addComponent(button, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE))))
+					.addGap(26))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -102,9 +96,16 @@ public class Vari extends JPanel {
 					.addComponent(lblTipAllTrigonometric)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnReturn)
-					.addGap(7))
+					.addGap(10))
 		);
 		setLayout(groupLayout);
-
+	}
+	
+	class btnFunction implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e1)
+		{
+			textField.setText(textField.getText().concat(((JButton)e1.getSource()).getText()));
+		}
 	}
 }

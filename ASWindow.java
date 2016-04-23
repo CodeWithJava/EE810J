@@ -1,55 +1,67 @@
-package Algebra;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
 
-public class ASWindow extends JFrame{
-	JFrame frame = new JFrame("Algebra Solver");
+public class ASWindow extends JFrame
+{
 	JPanel allp = new JPanel();
+	// Mode panel
+	Mode Mode = new Mode();
 	// two son panel
-	Algebra.Arith Arith = new Algebra.Arith();
-	Algebra.Vari Vari = new Algebra.Vari();	
+	Arith Arith = new Arith();
+	Vari Vari = new Vari();	
 	CardLayout cl = new CardLayout();
 	
 	public ASWindow()
 	{
+		super("Algebra Solver");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(100, 100, 450, 300);
-		this.setContentPane(allp);
-		
-		allp.setBorder(new EmptyBorder(5, 5, 5, 5));
+
 		allp.setLayout(cl);
-		allp.add(Arith);
-		allp.add(Vari);
 		
 		// add mode buttons
-		Font f = new Font("Helvetica", Font.PLAIN, 12);
-		JButton btn1 = new JButton("Arithmetics Mode");
-		btn1.setFont(f);
-		btn1.setBounds(56, 87, 136, 86);
+		JButton btn1 = (JButton) Mode.getComponent(0);
 		btn1.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e1)
 			{
-				cl.show(allp, "to ari");
+				cl.show(allp, "ari");
 			}
-		});
-		
-		JButton btn2 = new JButton("Variable Mode");
-		btn2.setFont(f);
-		btn2.setBounds(238, 87, 136, 86);
+		});	
+		JButton btn2 = (JButton) Mode.getComponent(1);
 		btn2.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e2)
 			{
-				cl.show(allp, "to vari");
+				cl.show(allp, "vari");
 			}
 		});
 		
-		allp.add(btn1);
-		allp.add(btn2);
+		JButton btn3 = (JButton) Arith.getComponent(8);
+		btn3.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e3)
+			{
+				cl.show(allp, "mode");
+			}
+		});
+		
+		JButton btn4 = (JButton) Vari.getComponent(7);
+		btn4.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e4)
+			{
+				cl.show(allp, "mode");
+			}
+		});
+		
+		
+		allp.add(Mode, "mode");
+		allp.add(Arith, "ari");
+		allp.add(Vari, "vari");
+		
 		this.add(allp);
 		this.pack();
 		this.setVisible(true);
@@ -61,7 +73,7 @@ public class ASWindow extends JFrame{
 		{
 			public void run()
 			{
-				new ASWindow();
+				new ASWindow().setVisible(true);;
 			}
 		});
 	}

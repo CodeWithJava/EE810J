@@ -1,4 +1,3 @@
-package Algebra;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +10,7 @@ public class Arith extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	JTextField textField;
 	public Arith() {
 		JLabel lblNewLabel = new JLabel("Please enter expression below.");
 		lblNewLabel.setFont(new Font("Helvetica", Font.PLAIN, 12));
@@ -18,7 +18,7 @@ public class Arith extends JPanel {
 		JLabel lblTipAllTrigonometric = new JLabel("Tip: All trigonometric function work in radians.");
 		lblTipAllTrigonometric.setFont(new Font("Helvetica", Font.PLAIN, 12));
 		
-		JTextField textField = new JTextField();
+		textField = new JTextField();
 		textField.setColumns(10);
 		
 		JButton button = new JButton("=");
@@ -27,34 +27,29 @@ public class Arith extends JPanel {
 			}
 		});
 		
-		JButton btnNewButton = new JButton("e^x");
-		
+		JButton btnNewButton = new JButton("e");
 		JButton btnSin = new JButton("sin");
-		btnSin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		
 		JButton btnReturn = new JButton("Return");
 		
 		JButton btnCos = new JButton("cos");
-		
 		JButton btnTan = new JButton("tan");
+		btnNewButton.addActionListener(new btnFunction());
+		btnSin.addActionListener(new btnFunction());
+		btnCos.addActionListener(new btnFunction());
+		btnTan.addActionListener(new btnFunction());
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(629, Short.MAX_VALUE)
-					.addComponent(btnReturn)
-					.addGap(15))
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 					.addGap(26)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 317, GroupLayout.PREFERRED_SIZE)
 							.addGap(26)
 							.addComponent(button, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE)
+						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
 						.addComponent(lblTipAllTrigonometric)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(btnNewButton)
@@ -65,6 +60,10 @@ public class Arith extends JPanel {
 							.addGap(18)
 							.addComponent(btnTan, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(338, Short.MAX_VALUE)
+					.addComponent(btnReturn)
+					.addGap(27))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -83,12 +82,19 @@ public class Arith extends JPanel {
 						.addComponent(btnSin))
 					.addGap(47)
 					.addComponent(lblTipAllTrigonometric)
-					.addGap(13)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnReturn)
-					.addContainerGap())
+					.addGap(10))
 		);
 		setLayout(groupLayout);
-
+	}
+	
+	class btnFunction implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e1)
+		{
+			textField.setText(textField.getText().concat(((JButton)e1.getSource()).getText()));
+		}
 	}
 
 }
