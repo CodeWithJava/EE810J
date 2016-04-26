@@ -15,30 +15,35 @@ public class Vari extends JPanel {
 	public Vari() {
 
 		JLabel lblNewLabel = new JLabel("Please enter expression below.");
-		lblNewLabel.setFont(new Font("Helvetica", Font.PLAIN, 12));
+		lblNewLabel.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		
 		JLabel lblTipAllTrigonometric = new JLabel("Tip: All trigonometric function work in radians.");
-		lblTipAllTrigonometric.setFont(new Font("Helvetica", Font.PLAIN, 12));
+		lblTipAllTrigonometric.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		
 		textField = new JTextField();
 		textField.setColumns(10);
 		
 		JLabel lblValueOfX = new JLabel("Value of x:");
-		lblValueOfX.setFont(new Font("Helvetica", Font.PLAIN, 12));
+		lblValueOfX.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
 		
 		JButton button = new JButton("=");
+		button.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
 		JButton btnNewButton = new JButton("e");
+		btnNewButton.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		JButton btnSin = new JButton("sin");
+		btnSin.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		JButton btnCos = new JButton("cos");
+		btnCos.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		JButton btnTam = new JButton("tan");
+		btnTam.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		
 		btnNewButton.addActionListener(new btnFunction());
 		btnSin.addActionListener(new btnFunction());
@@ -46,6 +51,7 @@ public class Vari extends JPanel {
 		btnTam.addActionListener(new btnFunction());
 		
 		JButton btnReturn = new JButton("Return");
+		btnReturn.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)

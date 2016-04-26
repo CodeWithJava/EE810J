@@ -4,6 +4,7 @@ import java.awt.*;
 import javax.swing.GroupLayout.*;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.*;
+import java.util.Scanner;
 
 public class Arith extends JPanel {
 
@@ -13,32 +14,62 @@ public class Arith extends JPanel {
 	JTextField textField;
 	public Arith() {
 		JLabel lblNewLabel = new JLabel("Please enter expression below.");
-		lblNewLabel.setFont(new Font("Helvetica", Font.PLAIN, 12));
+		lblNewLabel.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		
 		JLabel lblTipAllTrigonometric = new JLabel("Tip: All trigonometric function work in radians.");
-		lblTipAllTrigonometric.setFont(new Font("Helvetica", Font.PLAIN, 12));
+		lblTipAllTrigonometric.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		
 		textField = new JTextField();
 		textField.setColumns(10);
 		
 		JButton button = new JButton("=");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		button.setFont(new Font("Helvetica", Font.PLAIN, 13));
+		button.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				String postfix = new ConvertRPN().inToPost(textField.getText());
+				textField.setText(String.valueOf(new ReversePolishNotation().RPN(postfix)));
 			}
 		});
-		
-		JButton btnNewButton = new JButton("e");
+		JButton btnNewButton = new JButton("e^");
+		btnNewButton.setFont(new Font("Helvetica", Font.PLAIN, 13));
+		btnNewButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				textField.setText(textField.getText().concat("e()"));
+			}
+		});
 		JButton btnSin = new JButton("sin");
-		
+		btnSin.setFont(new Font("Helvetica", Font.PLAIN, 13));
+		btnSin.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				textField.setText(textField.getText().concat("s()"));
+			}
+		});
 		JButton btnReturn = new JButton("Return");
-		
+		btnReturn.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		JButton btnCos = new JButton("cos");
+		btnCos.setFont(new Font("Helvetica", Font.PLAIN, 13));
+		btnCos.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				textField.setText(textField.getText().concat("c()"));
+			}
+		});
 		JButton btnTan = new JButton("tan");
-		btnNewButton.addActionListener(new btnFunction());
-		btnSin.addActionListener(new btnFunction());
-		btnCos.addActionListener(new btnFunction());
-		btnTan.addActionListener(new btnFunction());
-		
+		btnTan.setFont(new Font("Helvetica", Font.PLAIN, 13));
+		btnTan.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				textField.setText(textField.getText().concat("t()"));
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -87,14 +118,6 @@ public class Arith extends JPanel {
 					.addGap(10))
 		);
 		setLayout(groupLayout);
-	}
-	
-	class btnFunction implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e1)
-		{
-			textField.setText(textField.getText().concat(((JButton)e1.getSource()).getText()));
-		}
 	}
 
 }
