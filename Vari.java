@@ -33,22 +33,49 @@ public class Vari extends JPanel {
 		button.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String postfix = new ConvertRPN().inToPost(textField.getText());
+				double p = Double.valueOf(textField_1.getText());
+				double result = new ReversePolishNotation().RPN(postfix,p);
+				textField.setText(String.valueOf(result));
 			}
 		});
 		
-		JButton btnNewButton = new JButton("e");
+		JButton btnNewButton = new JButton("e^");
 		btnNewButton.setFont(new Font("Helvetica", Font.PLAIN, 13));
+		btnNewButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				textField.setText(textField.getText().concat("e()"));
+			}
+		});
 		JButton btnSin = new JButton("sin");
 		btnSin.setFont(new Font("Helvetica", Font.PLAIN, 13));
+		btnSin.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				textField.setText(textField.getText().concat("s()"));
+			}
+		});
 		JButton btnCos = new JButton("cos");
 		btnCos.setFont(new Font("Helvetica", Font.PLAIN, 13));
+		btnCos.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				textField.setText(textField.getText().concat("c()"));
+			}
+		});
 		JButton btnTam = new JButton("tan");
 		btnTam.setFont(new Font("Helvetica", Font.PLAIN, 13));
-		
-		btnNewButton.addActionListener(new btnFunction());
-		btnSin.addActionListener(new btnFunction());
-		btnCos.addActionListener(new btnFunction());
-		btnTam.addActionListener(new btnFunction());
+		btnTam.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				textField.setText(textField.getText().concat("t()"));
+			}
+		});
 		
 		JButton btnReturn = new JButton("Return");
 		btnReturn.setFont(new Font("Helvetica", Font.PLAIN, 13));
@@ -105,13 +132,5 @@ public class Vari extends JPanel {
 					.addGap(10))
 		);
 		setLayout(groupLayout);
-	}
-	
-	class btnFunction implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e1)
-		{
-			textField.setText(textField.getText().concat(((JButton)e1.getSource()).getText()));
-		}
 	}
 }
