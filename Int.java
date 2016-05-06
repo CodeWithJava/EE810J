@@ -20,52 +20,40 @@ public class Int extends JPanel {
 	 * Create the panel.
 	 */
 	public Int() {
-		SpringLayout springLayout = new SpringLayout();
-		setLayout(springLayout);
+		setLayout(null);
 		
 		JLabel lblPleaseEnterThe = new JLabel("Please enter the expression below.");
-		springLayout.putConstraint(SpringLayout.WEST, lblPleaseEnterThe, 23, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.SOUTH, lblPleaseEnterThe, -248, SpringLayout.SOUTH, this);
+		lblPleaseEnterThe.setBounds(23, 52, 203, 13);
 		lblPleaseEnterThe.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		add(lblPleaseEnterThe);
 		
 		textField = new JTextField();
-		springLayout.putConstraint(SpringLayout.NORTH, textField, 6, SpringLayout.SOUTH, lblPleaseEnterThe);
-		springLayout.putConstraint(SpringLayout.WEST, textField, 0, SpringLayout.WEST, lblPleaseEnterThe);
-		springLayout.putConstraint(SpringLayout.SOUTH, textField, -206, SpringLayout.SOUTH, this);
-		springLayout.putConstraint(SpringLayout.EAST, textField, 394, SpringLayout.WEST, this);
+		textField.setBounds(23, 85, 371, 36);
 		add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Lower bound");
-		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel, 16, SpringLayout.SOUTH, textField);
-		springLayout.putConstraint(SpringLayout.WEST, lblNewLabel, 0, SpringLayout.WEST, lblPleaseEnterThe);
+		lblNewLabel.setBounds(23, 154, 73, 13);
 		lblNewLabel.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Upper bound");
-		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 157, SpringLayout.NORTH, this);
-		springLayout.putConstraint(SpringLayout.WEST, lblNewLabel_1, 0, SpringLayout.WEST, lblPleaseEnterThe);
+		lblNewLabel_1.setBounds(23, 198, 73, 13);
 		lblNewLabel_1.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		add(lblNewLabel_1);
 		
 		textField_1 = new JTextField();
-		springLayout.putConstraint(SpringLayout.NORTH, textField_1, 6, SpringLayout.SOUTH, textField);
-		springLayout.putConstraint(SpringLayout.WEST, textField_1, 33, SpringLayout.EAST, lblNewLabel);
+		textField_1.setBounds(129, 137, 130, 36);
 		add(textField_1);
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
-		springLayout.putConstraint(SpringLayout.SOUTH, textField_1, -21, SpringLayout.NORTH, textField_2);
-		springLayout.putConstraint(SpringLayout.NORTH, textField_2, 0, SpringLayout.NORTH, lblNewLabel_1);
-		springLayout.putConstraint(SpringLayout.WEST, textField_2, 0, SpringLayout.WEST, textField_1);
-		springLayout.putConstraint(SpringLayout.SOUTH, textField_2, -107, SpringLayout.SOUTH, this);
+		textField_2.setBounds(129, 185, 130, 36);
 		add(textField_2);
 		textField_2.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Integral!");
-		springLayout.putConstraint(SpringLayout.NORTH, btnNewButton, 40, SpringLayout.SOUTH, textField);
-		springLayout.putConstraint(SpringLayout.WEST, btnNewButton, 36, SpringLayout.EAST, textField_1);
+		btnNewButton.setBounds(295, 171, 91, 29);
 		btnNewButton.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener()
@@ -90,16 +78,12 @@ public class Int extends JPanel {
 		});
 		
 		JButton btnNewButton_1 = new JButton("Return");
+		btnNewButton_1.setBounds(356, 298, 82, 29);
 		btnNewButton_1.setFont(new Font("Helvetica", Font.PLAIN, 13));
-		springLayout.putConstraint(SpringLayout.SOUTH, btnNewButton_1, -10, SpringLayout.SOUTH, this);
-		springLayout.putConstraint(SpringLayout.EAST, btnNewButton_1, -21, SpringLayout.EAST, this);
 		add(btnNewButton_1);
 		
 		textField_3 = new JTextField();
-		springLayout.putConstraint(SpringLayout.NORTH, textField_3, 13, SpringLayout.SOUTH, textField_2);
-		springLayout.putConstraint(SpringLayout.WEST, textField_3, 0, SpringLayout.WEST, lblPleaseEnterThe);
-		springLayout.putConstraint(SpringLayout.SOUTH, textField_3, -19, SpringLayout.NORTH, btnNewButton_1);
-		springLayout.putConstraint(SpringLayout.EAST, textField_3, 0, SpringLayout.EAST, textField);
+		textField_3.setBounds(23, 243, 371, 36);
 		add(textField_3);
 		textField_3.setColumns(10);
 		textField_3.setEditable(false);

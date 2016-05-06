@@ -14,15 +14,19 @@ public class Arith extends JPanel {
 	JTextField textField;
 	public Arith() {
 		JLabel lblNewLabel = new JLabel("Please enter expression below.");
+		lblNewLabel.setBounds(26, 64, 427, 13);
 		lblNewLabel.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		
 		JLabel lblTipAllTrigonometric = new JLabel("Tip: All trigonometric function work in radians.");
+		lblTipAllTrigonometric.setBounds(26, 258, 265, 13);
 		lblTipAllTrigonometric.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		
 		textField = new JTextField();
+		textField.setBounds(26, 108, 317, 36);
 		textField.setColumns(10);
 		
 		JButton button = new JButton("=");
+		button.setBounds(360, 114, 42, 29);
 		button.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		button.addActionListener(new ActionListener()
 		{
@@ -33,6 +37,7 @@ public class Arith extends JPanel {
 			}
 		});
 		JButton btnNewButton = new JButton("e^");
+		btnNewButton.setBounds(26, 185, 75, 29);
 		btnNewButton.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		btnNewButton.addActionListener(new ActionListener()
 		{
@@ -42,6 +47,7 @@ public class Arith extends JPanel {
 			}
 		});
 		JButton btnSin = new JButton("sin");
+		btnSin.setBounds(129, 185, 75, 29);
 		btnSin.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		btnSin.addActionListener(new ActionListener()
 		{
@@ -51,8 +57,10 @@ public class Arith extends JPanel {
 			}
 		});
 		JButton btnReturn = new JButton("Return");
+		btnReturn.setBounds(350, 290, 82, 29);
 		btnReturn.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		JButton btnCos = new JButton("cos");
+		btnCos.setBounds(240, 185, 75, 29);
 		btnCos.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		btnCos.addActionListener(new ActionListener()
 		{
@@ -62,6 +70,7 @@ public class Arith extends JPanel {
 			}
 		});
 		JButton btnTan = new JButton("tan");
+		btnTan.setBounds(342, 185, 75, 29);
 		btnTan.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		btnTan.addActionListener(new ActionListener()
 		{
@@ -70,54 +79,16 @@ public class Arith extends JPanel {
 				textField.setText(textField.getText().concat("t()"));
 			}
 		});
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(26)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 317, GroupLayout.PREFERRED_SIZE)
-							.addGap(26)
-							.addComponent(button, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
-						.addComponent(lblTipAllTrigonometric)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnNewButton)
-							.addGap(26)
-							.addComponent(btnSin, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-							.addGap(32)
-							.addComponent(btnCos, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(btnTan, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap())
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(338, Short.MAX_VALUE)
-					.addComponent(btnReturn)
-					.addGap(27))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(38)
-					.addComponent(lblNewLabel)
-					.addGap(34)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-						.addComponent(button, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
-					.addGap(39)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnNewButton)
-						.addComponent(btnTan)
-						.addComponent(btnCos)
-						.addComponent(btnSin))
-					.addGap(47)
-					.addComponent(lblTipAllTrigonometric)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnReturn)
-					.addGap(10))
-		);
-		setLayout(groupLayout);
+		setLayout(null);
+		add(btnReturn);
+		add(lblTipAllTrigonometric);
+		add(textField);
+		add(button);
+		add(btnNewButton);
+		add(btnSin);
+		add(btnCos);
+		add(btnTan);
+		add(lblNewLabel);
 	}
 
 }

@@ -42,7 +42,7 @@ public class ASWindow extends JFrame
 			}
 		});
 		
-		JButton btn3 = (JButton) Arith.getComponent(8);
+		JButton btn3 = (JButton) Arith.getComponent(0);
 		btn3.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e3)

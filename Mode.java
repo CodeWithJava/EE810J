@@ -21,20 +21,20 @@ public class Mode extends JPanel {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(135)
+					.addGap(151)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnVariableMode, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnArthimeticMode, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(174, Short.MAX_VALUE))
+					.addContainerGap(165, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(56)
+					.addGap(57)
 					.addComponent(btnArthimeticMode, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
 					.addGap(39)
 					.addComponent(btnVariableMode, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(45, Short.MAX_VALUE))
+					.addContainerGap(80, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 

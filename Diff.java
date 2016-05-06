@@ -18,27 +18,21 @@ public class Diff extends JPanel {
 	 * Create the panel.
 	 */
 	public Diff() {
-		SpringLayout springLayout = new SpringLayout();
-		setLayout(springLayout);
+		setLayout(null);
 		
 		JLabel lblPleaseEnterThe = new JLabel("Please enter the expression below.");
-		springLayout.putConstraint(SpringLayout.WEST, lblPleaseEnterThe, 22, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.SOUTH, lblPleaseEnterThe, -243, SpringLayout.SOUTH, this);
+		lblPleaseEnterThe.setBounds(22, 65, 203, 13);
 		lblPleaseEnterThe.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		add(lblPleaseEnterThe);
 		
 		textField = new JTextField();
-		springLayout.putConstraint(SpringLayout.NORTH, textField, 27, SpringLayout.SOUTH, lblPleaseEnterThe);
-		springLayout.putConstraint(SpringLayout.WEST, textField, 22, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.SOUTH, textField, 64, SpringLayout.SOUTH, lblPleaseEnterThe);
-		springLayout.putConstraint(SpringLayout.EAST, textField, 382, SpringLayout.WEST, this);
+		textField.setBounds(41, 111, 360, 37);
 		add(textField);
 		textField.setColumns(10);
 		
 		JButton btnDiff = new JButton("Differential!");
+		btnDiff.setBounds(165, 178, 110, 29);
 		btnDiff.setFont(new Font("Helvetica", Font.PLAIN, 13));
-		springLayout.putConstraint(SpringLayout.NORTH, btnDiff, 30, SpringLayout.SOUTH, textField);
-		springLayout.putConstraint(SpringLayout.WEST, btnDiff, 155, SpringLayout.WEST, this);
 		add(btnDiff);
 		btnDiff.addActionListener(new ActionListener()
 		{
@@ -60,19 +54,14 @@ public class Diff extends JPanel {
 		});
 		
 		textField_1 = new JTextField();
-		springLayout.putConstraint(SpringLayout.NORTH, textField_1, 15, SpringLayout.SOUTH, btnDiff);
-		springLayout.putConstraint(SpringLayout.WEST, textField_1, 22, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.SOUTH, textField_1, 52, SpringLayout.SOUTH, btnDiff);
-		springLayout.putConstraint(SpringLayout.EAST, textField_1, 0, SpringLayout.EAST, textField);
+		textField_1.setBounds(41, 228, 360, 37);
 		add(textField_1);
 		textField_1.setColumns(10);
 		textField_1.setEditable(false);
 		
 		JButton btnNewButton = new JButton("Return");
+		btnNewButton.setBounds(340, 298, 94, 29);
 		btnNewButton.setFont(new Font("Helvetica", Font.PLAIN, 13));
-		springLayout.putConstraint(SpringLayout.WEST, btnNewButton, -118, SpringLayout.EAST, this);
-		springLayout.putConstraint(SpringLayout.SOUTH, btnNewButton, -10, SpringLayout.SOUTH, this);
-		springLayout.putConstraint(SpringLayout.EAST, btnNewButton, -24, SpringLayout.EAST, this);
 		add(btnNewButton);
 
 	}
