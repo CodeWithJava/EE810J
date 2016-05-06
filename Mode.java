@@ -12,7 +12,7 @@ public class Mode extends JPanel {
 	 */
 	public Mode() {
 		
-		JButton btnArthimeticMode = new JButton("Arithimetic Mode");
+		JButton btnArthimeticMode = new JButton("Arithmetic Mode");
 		btnArthimeticMode.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		
 		JButton btnVariableMode = new JButton("Variable Mode");
