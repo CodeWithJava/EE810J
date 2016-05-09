@@ -1,5 +1,3 @@
-package algebra;
-
 public class Polynomial {
 	private double [] coef;//coefficients
 	private int deg;
