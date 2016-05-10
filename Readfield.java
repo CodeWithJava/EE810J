@@ -1,25 +1,29 @@
-//package algebra;
+package algebra;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+// use the regual expression to read the input field
 public class Readfield {
 	public static void main(String [] args) throws Exception
 	{
+		// user interface
 		System.out.println("Welcome to work with Polynimal System");
 		System.out.println("Please select the mode by code");
-		System.out.println("1.evaluate 2.compose 3.differentiate 4.integration");
+		System.out.println("1.evaluate 2.compose 3.differentiate 4.integration 5. root");
 		Scanner in = new Scanner(System.in);
 		int select = in.nextInt();
+		//evaluate the polynomial 
 		if(select == 1)
 		{
 			System.out.println("Please input the polynomial ");
 			System.out.println("must: 1x^2+5x^5-5x^0");
 			String eq = in.next();
-			String a = "([-+]*[0-9]+)x\\^*([-+]*[0-9]+)";
+			String a = "([-+]*[0-9]+)x\\^*([-+]*[0-9]+)";//the pattern
 			Pattern p1 = Pattern.compile(a);
 			Matcher m1 = p1.matcher(eq);
 			Polynomial ep =new Polynomial(0,0);	
-
+			
 			while(m1.find())
 			{
 				double coef = Double.parseDouble(m1.group(1));
@@ -33,6 +37,7 @@ public class Readfield {
 			System.out.println(ep.evaluate(val));
 			
 		}
+		// calculate the a(b(x))
 		if(select == 2)
 		{
 			System.out.println("Please input the polynomial g(f(x)) ");
@@ -64,6 +69,8 @@ public class Readfield {
 			System.out.println(gx);
 			System.out.println(gx.compose(fx));
 		}
+		
+		//calculate the differentiate
 		if(select == 3)
 		{
 			System.out.println("Please input the polynomial ");
@@ -86,6 +93,7 @@ public class Readfield {
 			
 
 		}
+		//calculate the integration
 		if(select == 4)
 		{
 			System.out.println("Please input the polynomial ");
@@ -104,7 +112,7 @@ public class Readfield {
 				ep = ep.plus(ep1);
 			}
 			System.out.println(ep);
-			System.out.println(ep.integration());
+			//System.out.println(ep.integration());
 			System.out.println("Please input the lower limit of integral");
 			double vallower = in.nextDouble();
 			System.out.println("Please input the upper limit of integral");
@@ -112,7 +120,30 @@ public class Readfield {
 			System.out.println(ep.integration(vallower, valupper));
 			
 		}
+		//calculate the root
+		if(select == 5)
+		{
+			System.out.println("Please input the polynomial ");
+			System.out.println("must: 1x^2+5x^5-5x^0");
+			String eq = in.next();
+			String a = "([-+]*[0-9]+)x\\^*([-+]*[0-9]+)";
+			Pattern p1 = Pattern.compile(a);
+			Matcher m1 = p1.matcher(eq);
+			Polynomial ep =new Polynomial(0,0);	
 
+			while(m1.find())
+			{
+				double coef = Double.parseDouble(m1.group(1));
+				int exp = Integer.parseInt(m1.group(2));
+				Polynomial ep1 =new Polynomial(coef,exp);
+				ep = ep.plus(ep1);
+			}
+			System.out.println(ep);
+			//System.out.println(ep.integration());
+			System.out.println(ep.root());
+			
+		}
+		//testing code:
 		/*String eq = in.next();
 		String a = "([-+]*[1-9]*)x\\^*([-+]*[2-9]+)";
 		Pattern p1 = Pattern.compile(a);
