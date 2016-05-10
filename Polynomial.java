@@ -1,3 +1,7 @@
+package algebra;
+
+import java.util.Random;
+
 public class Polynomial {
 	private double [] coef;//coefficients
 	private int deg;
@@ -10,7 +14,7 @@ public class Polynomial {
 		deg = degree();
 	}
 	
-	// retrun the degree of this polynomial
+	// retrun the degree of this polynomial, index of the array is the degree
 	public int degree()
 	{
 		int d = 0;
@@ -83,9 +87,9 @@ public class Polynomial {
 		if (this.deg == 0)
 			return new Polynomial(0,0);
 		Polynomial deriv = new Polynomial (0, this.deg -1);
-		deriv.deg = this.deg -1;
+		deriv.deg = this.deg -1;// all the deg =  deg -1 
 		for( int i = 0 ; i < this.deg ; i++)
-			deriv.coef [ i ] = (i+1) * coef[i +1];
+			deriv.coef [ i ] = (i+1) * coef[i +1];// new coef = coef * degree
 		return deriv;
 	}
 	//integration with lower limite of integration and upper limite of integration
@@ -97,7 +101,7 @@ public class Polynomial {
 	
 	public Polynomial integration()
 	{
-		Polynomial integral = new Polynomial(1,this.deg+1);
+		Polynomial integral = new Polynomial(1,this.deg+1);// all degree +1
 		for(int i = 0; i <= this.deg+1; i ++)
 		{
 			if( i == 0 )
@@ -105,11 +109,11 @@ public class Polynomial {
 				integral.coef[ i ] = 0;
 			}
 			else
-				integral.coef[ i ] = this.coef[i-1] / i;
+				integral.coef[ i ] = this.coef[i-1] / i;//new coef
 		}
 		return integral;
 	}
-	
+	//print the polynomial
 	public String toString()
 	{
 		if(deg ==0)
@@ -132,10 +136,33 @@ public class Polynomial {
 		}
 		return s;
 	}
-	
-	/*public static void main(String [] args)
+	//netown method:x(n) = x(n-1)-dx still work on this problem
+	public double root()
 	{
-		Polynomial s1 = new Polynomial(3,3);
+		//Random a = new Random();did not work well, can not promise find the right answers 
+		//double x = 10*(a.nextDouble()-0.5);
+		double x = 3.2;// can not promise find all  answers
+		Polynomial da = this.differentiate();
+		for(int i = 0 ; i < 1000000000 ; i++)
+		{
+			double dx = (this.evaluate(x))/da.evaluate(x);// dx = f(x(n-1))/df(x(n-1))
+			if( dx<= 0.0000000000001)
+			{
+				return x;
+			}
+			else
+			{
+				x = x - dx;
+			}
+		}
+		return -1;
+		// still can not find the good balance of the dx and itertation times.
+	}
+	
+	//test all the method:
+	public static void main(String [] args)
+	{
+		/*Polynomial s1 = new Polynomial(3,3);
 		Polynomial s2 = new Polynomial(2,2);
 		Polynomial s3 = new Polynomial(1,1);
 		Polynomial s4 = new Polynomial(1,0);
@@ -151,10 +178,24 @@ public class Polynomial {
 		System.out.println(s6);
 		System.out.println(s7);
 		System.out.println(s8);
-		System.out.println(s3);
-		*/
+		System.out.println(s3);*/
+		Polynomial s1 = new Polynomial(1,2);
+		Polynomial s2 = new Polynomial(-4,0);
+		s1=s1.plus(s2);
+		System.out.println(s1);
+		System.out.println(s1.root());
+		Polynomial s3 = new Polynomial(3,3);
+		s1 = s1.plus(s3);
+		System.out.println(s1);
+		System.out.println(s1.root());
+		Polynomial s4 = new Polynomial(-3,5);
+		s1 = s1.plus(s4);
+		System.out.println(s1);
+		System.out.println(s1.root());
+		
 
 		
 	}
+}
 	
 
